@@ -1,8 +1,8 @@
-"""Configuración del archivo de logs (único uso de archivos del sistema)."""
+"""Configuración del archivo de logs."""
 import logging
 import os
 
-# Ruta del archivo de log junto a este módulo, sin importar desde dónde se ejecute
+# Ruta del archivo de log junto a este módulo
 RUTA_LOG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "software_fj.log")
 
 
