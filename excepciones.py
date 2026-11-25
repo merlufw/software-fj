@@ -1,4 +1,4 @@
-"""Excepciones personalizadas del sistema Software FJ.
+"""Excepciones del sistema Software FJ.
 
 Todas heredan de SoftwareFJError, de modo que el programa principal pueda
 capturar cualquier error propio del dominio con un solo ``except``.
