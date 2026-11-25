@@ -7,7 +7,7 @@ from excepciones import (CalculoInconsistenteError, OperacionNoPermitidaError,
 from logger_config import obtener_logger
 from servicios import Servicio
 
-log = obtener_logger()  # logger compartido del sistema
+log = obtener_logger()  #logger compartido del sistema
 
 
 class Reserva(Entidad):
@@ -15,21 +15,21 @@ class Reserva(Entidad):
 
     def __init__(self, cliente, servicio, horas) -> None:
         super().__init__()
-        # Se validan los tipos antes de aceptar la reserva
+        #Se validan los tipos antes de aceptar la reserva
         if not isinstance(cliente, Cliente):
             raise ReservaInvalidaError("La reserva requiere un Cliente válido")
         if not isinstance(servicio, Servicio):
             raise ReservaInvalidaError("La reserva requiere un Servicio válido")
         try:
-            servicio.validar_parametros(horas)  # la duración la valida el propio servicio
+            servicio.validar_parametros(horas)  #la duración la valida el propio servicio
         except ServicioInvalidoError as error:
-            # Encadenamiento de excepciones: se conserva la causa original con 'from'
+            #Encadenamiento de excepciones: se conserva la causa original con 'from'
             raise ReservaInvalidaError(f"Duración no válida para la reserva: {horas!r}") from error
         self._cliente = cliente
         self._servicio = servicio
         self._horas = horas
         self._estado = "PENDIENTE"
-        self._costo = None  # se llena al procesar
+        self._costo = None  #se llena al procesar
 
     @property
     def estado(self) -> str:
@@ -41,7 +41,7 @@ class Reserva(Entidad):
 
     def confirmar(self) -> bool:
         """Confirma la reserva si está pendiente y el servicio está disponible."""
-        try:  # try/except/else/finally completo
+        try:
             if self._estado != "PENDIENTE":
                 raise OperacionNoPermitidaError(
                     f"No se puede confirmar una reserva en estado {self._estado}")
@@ -49,13 +49,13 @@ class Reserva(Entidad):
                 raise ServicioNoDisponibleError(
                     f"El servicio '{self._servicio.nombre}' no está disponible")
         except SoftwareFJError as error:
-            log.error("Fallo al confirmar reserva #%s: %s", self.id, error)  # registra el error
+            log.error("Fallo al confirmar reserva #%s: %s", self.id, error)  #registra el error
             return False
-        else:  # solo se ejecuta si no hubo excepción
+        else:  #solo se ejecuta si no hubo excepción
             self._estado = "CONFIRMADA"
             log.info("Reserva #%s confirmada", self.id)
             return True
-        finally:  # siempre se ejecuta
+        finally:  #siempre se ejecuta
             log.debug("Intento de confirmación finalizado para reserva #%s", self.id)
 
     def cancelar(self) -> bool:
@@ -83,7 +83,7 @@ class Reserva(Entidad):
             try:
                 costo = self._servicio.calcular_costo(self._horas, impuesto, descuento)
             except CalculoInconsistenteError as error:
-                # Se envuelve el error de cálculo en uno de reserva, conservando la causa
+                #Se envuelve el error de cálculo en uno de reserva, conservando la causa
                 raise ReservaInvalidaError("No fue posible calcular el costo") from error
         except SoftwareFJError as error:
             log.error("Fallo al procesar reserva #%s: %s (causa: %r)",
