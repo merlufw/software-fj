@@ -10,12 +10,12 @@ class Servicio(Entidad):
     """Servicio genérico de Software FJ. Las subclases definen costo, descripción y validación."""
 
     def __init__(self, nombre=None, tarifa_hora=None) -> None:
-        super().__init__()  # id único
+        super().__init__()  #id único
         if nombre is None or tarifa_hora is None:
             raise ParametroFaltanteError("Un servicio requiere 'nombre' y 'tarifa_hora'")
-        self._nombre = str(nombre).strip()  # nombre del servicio
-        self._tarifa_hora = tarifa_hora  # tarifa por hora (se valida abajo)
-        self._disponible = True  # por defecto el servicio está disponible
+        self._nombre = str(nombre).strip()  #nombre del servicio
+        self._tarifa_hora = tarifa_hora  #tarifa por hora
+        self._disponible = True  #por defecto el servicio está disponible
         if not self._nombre:
             raise ServicioInvalidoError("El nombre del servicio no puede estar vacío")
         if not isinstance(tarifa_hora, (int, float)) or tarifa_hora <= 0:
@@ -37,7 +37,7 @@ class Servicio(Entidad):
         """Activa o desactiva el servicio."""
         self._disponible = bool(estado)
 
-    # ---- métodos abstractos que cada servicio debe sobrescribir ----
+    #metodos abstractos que cada servicio debe sobrescribir
     @abstractmethod
     def costo_base(self, horas: float) -> float:
         """Costo sin impuestos ni descuentos para la duración dada."""
@@ -46,7 +46,7 @@ class Servicio(Entidad):
     def validar_parametros(self, horas: float) -> None:
         """Valida la duración y las reglas propias del servicio."""
 
-    # ---- método sobrecargado (variantes mediante parámetros opcionales) ----
+    #metodo sobrecargado
     def calcular_costo(self, horas: float, impuesto: float = 0.0, descuento: float = 0.0) -> float:
         """Calcula el costo en sus variantes:
         calcular_costo(h)                      -> costo base
@@ -54,11 +54,11 @@ class Servicio(Entidad):
         calcular_costo(h, descuento=0.10)      -> con descuento
         calcular_costo(h, 0.19, 0.10)          -> con ambos
         """
-        self.validar_parametros(horas)  # polimorfismo: valida según el tipo de servicio
+        self.validar_parametros(horas)  #polimorfismo: valida según el tipo de servicio
         if not (0 <= impuesto <= 1) or not (0 <= descuento < 1):
             raise CalculoInconsistenteError(
                 f"Impuesto ({impuesto}) o descuento ({descuento}) fuera de rango")
-        total = self.costo_base(horas) * (1 - descuento) * (1 + impuesto)  # fórmula final
+        total = self.costo_base(horas) * (1 - descuento) * (1 + impuesto)  #formula final
         if total <= 0:
             raise CalculoInconsistenteError(f"Costo calculado inválido: {total}")
         return round(total, 2)
@@ -82,7 +82,7 @@ class ReservaSala(Servicio):
             raise ServicioInvalidoError(f"Una sala se reserva entre 0 y 12 horas, no {horas!r}")
 
     def costo_base(self, horas: float) -> float:
-        recargo = 1.10 if self._capacidad > 20 else 1.0  # 10% extra en salas grandes
+        recargo = 1.10 if self._capacidad > 20 else 1.0  #10% extra en salas grandes
         return self._tarifa_hora * horas * recargo
 
     def describir(self) -> str:
