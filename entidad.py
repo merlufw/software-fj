@@ -4,7 +4,7 @@ from itertools import count
 
 
 class Entidad(ABC):
-    """Base abstracta: toda entidad tiene un identificador único y puede describirse."""
+    """Base abstracta toda entidad tiene un identificador único y puede describirse."""
 
     _contador = count(1)  # generador compartido de identificadores 1, 2, 3...
 
