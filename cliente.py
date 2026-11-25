@@ -23,7 +23,7 @@ class Cliente(Entidad):
         self.email = email
         self.telefono = telefono
 
-    # ---------- nombre ----------
+    #nombre
     @property
     def nombre(self) -> str:
         return self._nombre
@@ -34,7 +34,7 @@ class Cliente(Entidad):
             raise ClienteInvalidoError(f"Nombre inválido: {valor!r}")
         self._nombre = valor.strip()
 
-    # ---------- documento ----------
+    #documento
     @property
     def documento(self) -> str:
         return self._documento
@@ -46,7 +46,7 @@ class Cliente(Entidad):
             raise ClienteInvalidoError(f"Documento inválido (6 a 12 dígitos): {valor!r}")
         self._documento = texto
 
-    # ---------- email ----------
+    #correo
     @property
     def email(self) -> str:
         return self._email
@@ -57,7 +57,7 @@ class Cliente(Entidad):
             raise ClienteInvalidoError(f"Correo electrónico inválido: {valor!r}")
         self._email = valor.strip().lower()
 
-    # ---------- teléfono (opcional) ----------
+    #teléfono
     @property
     def telefono(self):
         return self._telefono
