@@ -1,0 +1,102 @@
+2026-11-25 17:52:07 | INFO     | ===== INICIO DE LA SIMULACIÓN =====
+2026-11-25 17:52:07 | INFO     | Operación 1: Registrar cliente válido
+2026-11-25 17:52:07 | DEBUG    | Operación 1 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 2: Registrar cliente con correo inválido
+2026-11-25 17:52:07 | ERROR    | Operación 2 falló: Correo electrónico inválido: 'carlos-sin-arroba' (causa: None)
+2026-11-25 17:52:07 | DEBUG    | Operación 2 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 3: Registrar cliente sin documento (parámetro faltante)
+2026-11-25 17:52:07 | ERROR    | Operación 3 falló: Faltan parámetros del cliente: documento (causa: None)
+2026-11-25 17:52:07 | DEBUG    | Operación 3 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 4: Crear servicio ReservaSala
+2026-11-25 17:52:07 | DEBUG    | Operación 4 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 5: Crear servicio AlquilerEquipo
+2026-11-25 17:52:07 | DEBUG    | Operación 5 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 6: Crear servicio Asesoría
+2026-11-25 17:52:07 | DEBUG    | Operación 6 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 7: Crear asesoría con tarifa inválida
+2026-11-25 17:52:07 | ERROR    | Operación 7 falló: Tarifa por hora inválida: -5 (causa: None)
+2026-11-25 17:52:07 | DEBUG    | Operación 7 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 8: Reserva exitosa confirmada y procesada
+2026-11-25 17:52:07 | INFO     | Reserva #8 confirmada
+2026-11-25 17:52:07 | DEBUG    | Intento de confirmación finalizado para reserva #8
+2026-11-25 17:52:07 | INFO     | Reserva #8 procesada. Costo: $282,744.00
+2026-11-25 17:52:07 | DEBUG    | Intento de procesamiento finalizado para reserva #8
+2026-11-25 17:52:07 | DEBUG    | Operación 8 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 9: Reserva con duración inválida
+2026-11-25 17:52:07 | ERROR    | Operación 9 falló: Duración no válida para la reserva: 500 (causa: ServicioInvalidoError('Un equipo se alquila entre 0 y 72 horas, no 500'))
+2026-11-25 17:52:07 | DEBUG    | Operación 9 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 10: Confirmar reserva de servicio no disponible
+2026-11-25 17:52:07 | ERROR    | Fallo al confirmar reserva #10: El servicio 'Asesoría en Python' no está disponible
+2026-11-25 17:52:07 | DEBUG    | Intento de confirmación finalizado para reserva #10
+2026-11-25 17:52:07 | DEBUG    | Operación 10 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 11: Procesar reserva sin confirmar
+2026-11-25 17:52:07 | ERROR    | Fallo al procesar reserva #11: Solo se procesan reservas CONFIRMADAS (estado actual: PENDIENTE) (causa: None)
+2026-11-25 17:52:07 | DEBUG    | Intento de procesamiento finalizado para reserva #11
+2026-11-25 17:52:07 | DEBUG    | Operación 11 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 12: Cancelar una reserva dos veces
+2026-11-25 17:52:07 | INFO     | Reserva #12 cancelada
+2026-11-25 17:52:07 | DEBUG    | Intento de cancelación finalizado para reserva #12
+2026-11-25 17:52:07 | ERROR    | Fallo al cancelar reserva #12: No se puede cancelar una reserva en estado CANCELADA
+2026-11-25 17:52:07 | DEBUG    | Intento de cancelación finalizado para reserva #12
+2026-11-25 17:52:07 | DEBUG    | Operación 12 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 13: Procesar con descuento inconsistente
+2026-11-25 17:52:07 | INFO     | Reserva #13 confirmada
+2026-11-25 17:52:07 | DEBUG    | Intento de confirmación finalizado para reserva #13
+2026-11-25 17:52:07 | ERROR    | Fallo al procesar reserva #13: No fue posible calcular el costo (causa: CalculoInconsistenteError('Impuesto (0.19) o descuento (1.5) fuera de rango'))
+2026-11-25 17:52:07 | DEBUG    | Intento de procesamiento finalizado para reserva #13
+2026-11-25 17:52:07 | DEBUG    | Operación 13 finalizada
+2026-11-25 17:52:07 | INFO     | Operación 14: Crear reserva con cliente de tipo incorrecto
+2026-11-25 17:52:07 | ERROR    | Operación 14 falló: La reserva requiere un Cliente válido (causa: None)
+2026-11-25 17:52:07 | DEBUG    | Operación 14 finalizada
+2026-11-25 17:52:07 | INFO     | ===== FIN DE LA SIMULACIÓN: el sistema siguió activo =====
+2026-11-25 17:52:11 | INFO     | ===== INICIO DE LA SIMULACIÓN =====
+2026-11-25 17:52:11 | INFO     | Operación 1: Registrar cliente válido
+2026-11-25 17:52:11 | DEBUG    | Operación 1 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 2: Registrar cliente con correo inválido
+2026-11-25 17:52:11 | ERROR    | Operación 2 falló: Correo electrónico inválido: 'carlos-sin-arroba' (causa: None)
+2026-11-25 17:52:11 | DEBUG    | Operación 2 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 3: Registrar cliente sin documento (parámetro faltante)
+2026-11-25 17:52:11 | ERROR    | Operación 3 falló: Faltan parámetros del cliente: documento (causa: None)
+2026-11-25 17:52:11 | DEBUG    | Operación 3 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 4: Crear servicio ReservaSala
+2026-11-25 17:52:11 | DEBUG    | Operación 4 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 5: Crear servicio AlquilerEquipo
+2026-11-25 17:52:11 | DEBUG    | Operación 5 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 6: Crear servicio Asesoría
+2026-11-25 17:52:11 | DEBUG    | Operación 6 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 7: Crear asesoría con tarifa inválida
+2026-11-25 17:52:11 | ERROR    | Operación 7 falló: Tarifa por hora inválida: -5 (causa: None)
+2026-11-25 17:52:11 | DEBUG    | Operación 7 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 8: Reserva exitosa confirmada y procesada
+2026-11-25 17:52:11 | INFO     | Reserva #8 confirmada
+2026-11-25 17:52:11 | DEBUG    | Intento de confirmación finalizado para reserva #8
+2026-11-25 17:52:11 | INFO     | Reserva #8 procesada. Costo: $282,744.00
+2026-11-25 17:52:11 | DEBUG    | Intento de procesamiento finalizado para reserva #8
+2026-11-25 17:52:11 | DEBUG    | Operación 8 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 9: Reserva con duración inválida
+2026-11-25 17:52:11 | ERROR    | Operación 9 falló: Duración no válida para la reserva: 500 (causa: ServicioInvalidoError('Un equipo se alquila entre 0 y 72 horas, no 500'))
+2026-11-25 17:52:11 | DEBUG    | Operación 9 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 10: Confirmar reserva de servicio no disponible
+2026-11-25 17:52:11 | ERROR    | Fallo al confirmar reserva #10: El servicio 'Asesoría en Python' no está disponible
+2026-11-25 17:52:11 | DEBUG    | Intento de confirmación finalizado para reserva #10
+2026-11-25 17:52:11 | DEBUG    | Operación 10 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 11: Procesar reserva sin confirmar
+2026-11-25 17:52:11 | ERROR    | Fallo al procesar reserva #11: Solo se procesan reservas CONFIRMADAS (estado actual: PENDIENTE) (causa: None)
+2026-11-25 17:52:11 | DEBUG    | Intento de procesamiento finalizado para reserva #11
+2026-11-25 17:52:11 | DEBUG    | Operación 11 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 12: Cancelar una reserva dos veces
+2026-11-25 17:52:11 | INFO     | Reserva #12 cancelada
+2026-11-25 17:52:11 | DEBUG    | Intento de cancelación finalizado para reserva #12
+2026-11-25 17:52:11 | ERROR    | Fallo al cancelar reserva #12: No se puede cancelar una reserva en estado CANCELADA
+2026-11-25 17:52:11 | DEBUG    | Intento de cancelación finalizado para reserva #12
+2026-11-25 17:52:11 | DEBUG    | Operación 12 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 13: Procesar con descuento inconsistente
+2026-11-25 17:52:11 | INFO     | Reserva #13 confirmada
+2026-11-25 17:52:11 | DEBUG    | Intento de confirmación finalizado para reserva #13
+2026-11-25 17:52:11 | ERROR    | Fallo al procesar reserva #13: No fue posible calcular el costo (causa: CalculoInconsistenteError('Impuesto (0.19) o descuento (1.5) fuera de rango'))
+2026-11-25 17:52:11 | DEBUG    | Intento de procesamiento finalizado para reserva #13
+2026-11-25 17:52:11 | DEBUG    | Operación 13 finalizada
+2026-11-25 17:52:11 | INFO     | Operación 14: Crear reserva con cliente de tipo incorrecto
+2026-11-25 17:52:11 | ERROR    | Operación 14 falló: La reserva requiere un Cliente válido (causa: None)
+2026-11-25 17:52:11 | DEBUG    | Operación 14 finalizada
+2026-11-25 17:52:11 | INFO     | ===== FIN DE LA SIMULACIÓN: el sistema siguió activo =====
