@@ -1,6 +1,6 @@
-"""Simulación de 14 operaciones del sistema Software FJ (sin base de datos).
+"""Simulación de 14 operaciones del sistema Software FJ.
 
-Ejecutar con:  python main.py
+Ejecutar con: python main.py
 Cada error se captura, se registra en software_fj.log y el programa continúa.
 """
 from cliente import Cliente
@@ -11,7 +11,7 @@ from servicios import AlquilerEquipo, Asesoria, ReservaSala
 
 log = obtener_logger()
 
-# Listas internas que reemplazan a una base de datos
+#Listas internas que reemplazan a una base de datos
 clientes, servicios, reservas = [], [], []
 
 
@@ -21,10 +21,10 @@ def ejecutar(numero: int, titulo: str, operacion) -> None:
     log.info("Operación %s: %s", numero, titulo)
     try:
         resultado = operacion()
-    except SoftwareFJError as error:  # errores propios del dominio
+    except SoftwareFJError as error:  #errores propios del dominio
         log.error("Operación %s falló: %s (causa: %r)", numero, error, error.__cause__)
         print(f"  [ERROR CONTROLADO] {type(error).__name__}: {error}")
-    except Exception as error:  # cualquier error inesperado también se controla
+    except Exception as error:  #cualquier error inesperado también se controla
         log.critical("Operación %s: error inesperado: %r", numero, error)
         print(f"  [ERROR INESPERADO] {error!r}")
     else:
@@ -33,7 +33,7 @@ def ejecutar(numero: int, titulo: str, operacion) -> None:
         log.debug("Operación %s finalizada", numero)
 
 
-# ---- Definición de las operaciones ----
+#Definición de las operaciones
 def op_cliente_valido():
     c = Cliente("Ana María Pérez", "1098765432", "ana.perez@correo.com", "3001234567")
     clientes.append(c)
@@ -45,7 +45,7 @@ def op_cliente_correo_invalido():
 
 
 def op_cliente_sin_documento():
-    return Cliente(nombre="Luis Gómez", email="luis@correo.com")  # falta 'documento'
+    return Cliente(nombre="Luis Gómez", email="luis@correo.com")  #falta documento
 
 
 def op_servicio_sala():
@@ -75,25 +75,25 @@ def op_reserva_exitosa():
     reservas.append(r)
     if not r.confirmar():
         raise RuntimeError("No se pudo confirmar")
-    r.procesar(impuesto=0.19, descuento=0.10)  # variante con IVA y descuento
+    r.procesar(impuesto=0.19, descuento=0.10)  #variante con IVA y descuento
     return r
 
 
 def op_reserva_duracion_invalida():
-    return Reserva(clientes[0], servicios[1], 500)  # supera las 72 h permitidas
+    return Reserva(clientes[0], servicios[1], 500)  #supera las 72 h permitidas
 
 
 def op_reserva_servicio_no_disponible():
     servicios[2].cambiar_disponibilidad(False)
     r = Reserva(clientes[0], servicios[2], 2)
     reservas.append(r)
-    return f"confirmada={r.confirmar()} | {r}"  # confirmar() devuelve False y registra el error
+    return f"confirmada={r.confirmar()} | {r}"  #confirmar() devuelve False y registra el error
 
 
 def op_procesar_sin_confirmar():
     r = Reserva(clientes[0], servicios[1], 10)
     reservas.append(r)
-    return f"costo={r.procesar()} | {r}"  # no está confirmada: operación no permitida
+    return f"costo={r.procesar()} | {r}"  #no está confirmada: operación no permitida
 
 
 def op_cancelar_dos_veces():
@@ -107,7 +107,7 @@ def op_calculo_inconsistente():
     r = Reserva(clientes[0], servicios[1], 4)
     reservas.append(r)
     r.confirmar()
-    costo = r.procesar(impuesto=0.19, descuento=1.5)  # descuento imposible
+    costo = r.procesar(impuesto=0.19, descuento=1.5)  #descuento imposible
     return f"costo={costo} | {r}"
 
 
@@ -138,7 +138,7 @@ def main() -> None:
 
     print("\n=== RESUMEN FINAL (polimorfismo: describir()) ===")
     for entidad in [*clientes, *servicios, *reservas]:
-        print(" ", entidad)  # str() llama a describir() de cada clase
+        print(" ", entidad)  #str() llama a describir() de cada clase
     log.info("===== FIN DE LA SIMULACIÓN: el sistema siguió activo =====")
 
 
